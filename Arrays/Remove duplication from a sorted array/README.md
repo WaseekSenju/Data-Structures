@@ -4,4 +4,4 @@ Given an integer array nums sorted in non-decreasing order, remove the duplicate
 
 # Solution
 
-The array rotation technique was useful here I have to rotate the array till the value of k.
+Here I have learnt the concepts of slow and fast pointers that is k and i. 
