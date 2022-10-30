@@ -20,7 +20,7 @@ public:
         {
             cout << nums[i];
         }
-        
+
         return slow_pointer;
     }
 };
