@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Data-Structures/Arrays/Rotate String",
-      "program": "c:/Data-Structures/Arrays/Rotate String/build/Debug/outDebug",
+      "cwd": "c:/Data-Structures/Playground",
+      "program": "c:/Data-Structures/Playground/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
