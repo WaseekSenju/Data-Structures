@@ -28,5 +28,5 @@ int main()
 {
     Solution s1 = Solution();
     std::vector<int> vector = {1, 3, 3, 1};
-    cout << s1.removeElement(vector, 3);
+    s1.removeElement(vector, 3);
 }
