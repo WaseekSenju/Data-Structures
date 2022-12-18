@@ -5,7 +5,7 @@ struct Node
 {
     struct Node *next;
     int value;
-} *first = NULL;
+} *first, *second, *third = NULL;
 
 struct Node *create(int A[], int n)
 {
@@ -156,10 +156,89 @@ void ReverseR(struct Node *q, struct Node *p)
     }
 }
 
+//------------------------ Reverse Recursive
+void Concat(struct Node *first, struct Node *second)
+{
+    while (first->next != NULL)
+    {
+        first = first->next;
+    }
+
+    first->next = second;
+}
+
+//------------------------ Reverse Recursive
+struct Node *Merge(struct Node *first, struct Node *second)
+{
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    third = temp;
+
+    while (first != NULL && second != NULL)
+    {
+        if (first->value > second->value)
+        {
+            third->next = second;
+            second = second->next;
+        }
+        else
+        {
+            third->next = first;
+            first = first->next;
+        }
+
+        third = third->next;
+    }
+
+    // for linking the remaing part of either of 2 lists
+    if (first != NULL)
+    {
+        third->next = first;
+    }
+    if (second != NULL)
+    {
+        third->next = second;
+    }
+    return temp->next;
+}
+
+int Cycle(struct Node *p)
+{
+    if (p->next == NULL || p->next->next == NULL)
+    {
+        return 0;
+    }
+
+    struct Node *slow, *fast = p;
+
+    do
+    {
+        slow = slow->next;
+        fast = fast->next;
+
+        fast = fast ? fast->next : slow;
+    } while (slow && fast && slow != fast);
+
+    if (slow == fast)
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
+
 int main()
 {
-    int A[] = {1, 2, 3, 4};
-    first = create(A, 4);
+    int A[] = {0};
+    struct Node *t1, *t2;
+    int B[] = {10, 20, 30, 40, 50};
+    first = create(B, 5);
+
+    // creating a loop
+    t1 = first->next->next;
+    t2 = first->next->next->next->next;
+    t2->next = t1;
+
+    // second = create(B, 4);
 
     // display(first);
     // printf("\n");
@@ -171,8 +250,9 @@ int main()
     // printf("min is : %d\n", Min(first));
     // struct Node *temp = SearchR(first, 3);
     // printf("Key found %d  at address %d \n", temp->value, temp);
-    ReverseR(NULL, first);
-    displayRecursive(first);
+    printf("%d", Cycle(first));
+    // struct Node *temp = Merge(first, second);
+    // displayRecursive(temp);
 
     return 0;
 }
