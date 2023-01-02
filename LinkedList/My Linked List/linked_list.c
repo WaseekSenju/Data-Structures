@@ -10,7 +10,6 @@ struct Node
 struct Node *create(int A[], int n)
 {
     struct Node *first = NULL;
-    int i;
     struct Node *temp, *last;
     first = (struct Node *)malloc(sizeof(struct Node));
     first->value = A[0];
@@ -52,6 +51,7 @@ void displayRecursive(struct Node *head)
         printf("->");
         displayRecursive(head->next);
     }
+    printf("NULL");
 }
 
 //------------------------ CountR
@@ -90,7 +90,7 @@ int Max(struct Node *head)
 {
     if (head == NULL)
     {
-        return INT_MIN;
+        return -999;
     }
 
     int x = Max(head->next);
@@ -104,7 +104,7 @@ int Min(struct Node *head)
 {
     if (head == NULL)
     {
-        return INT_MAX;
+        return 9999;
     }
 
     int x = Max(head->next);
@@ -125,9 +125,8 @@ struct Node *SearchR(struct Node *head, int key)
 }
 
 //------------------------ Reverse
-struct Node *Reverse(struct Node *head)
-{
-    struct Node *p = head;
+struct Node* reverseList(struct Node * head){
+   struct Node *p = head;
     struct Node *q = NULL;
     struct Node *r = NULL;
 
@@ -138,13 +137,14 @@ struct Node *Reverse(struct Node *head)
         p = p->next;
         q->next = r;
     }
-    head = q;
+    head=q;
     return head;
 }
 
 //------------------------ Reverse Recursive
 void ReverseR(struct Node *q, struct Node *p)
 {
+    
     if (p != NULL)
     {
         ReverseR(p, p->next);
@@ -228,21 +228,23 @@ int Cycle(struct Node *p)
 
 int main()
 {
-    int A[] = {0};
-    struct Node *t1, *t2;
+    //int A[] = {0};
+    struct Node *t1;
+    //, *t2;
     int B[] = {10, 20, 30, 40, 50};
-    first = create(B, 5);
+    t1 = create(B, 5);
 
     // creating a loop
-    t1 = first->next->next;
-    t2 = first->next->next->next->next;
-    t2->next = t1;
+    // t1 = first->next->next;
+    // t2 = first->next->next->next->next;
+    // t2->next = t1;
 
     // second = create(B, 4);
 
-    // display(first);
+    display(t1);
     // printf("\n");
-    // displayRecursive(first);
+    t1 = reverseList(t1);
+    display(t1);
     // printf("\n");
     // printf("count is %d\n", Count(first));
     // printf("sum is : %d\n", Sum(first));
@@ -250,7 +252,7 @@ int main()
     // printf("min is : %d\n", Min(first));
     // struct Node *temp = SearchR(first, 3);
     // printf("Key found %d  at address %d \n", temp->value, temp);
-    printf("%d", Cycle(first));
+    //printf("%d", Cycle(first));
     // struct Node *temp = Merge(first, second);
     // displayRecursive(temp);
 
