@@ -1,4 +1,4 @@
-// This is recursive solution and it uses backtrackign approach and uses the string as a stack,
+// This is recursive solution and it uses backtracking approach and uses the string as a stack,
 
 
 class Solution {
@@ -6,7 +6,7 @@ class Solution {
 public:
    // global variables that will be modifed by the wrapper function
     vector<string> result;
-    string stack;
+    string stack; // using the string as a stack
     void wrapperGenerator(int openCount, int closeCount , int n){
        
         // if all valid brackets have occured 

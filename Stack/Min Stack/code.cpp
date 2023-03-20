@@ -1,9 +1,6 @@
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 in O(1),
 
-
-
-
 class MinStack {
 public:
 
